@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-google-blue: #0b57d0;
+  --color-google-blue-hover: #0e4cad;
+  --color-google-border: #747775;
+  --color-google-border-hover: #1f1f1f;
+  --color-google-red: #b3261e;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1f1f1f;
+  --google-blue: #0b57d0;
+  --google-blue-hover: #0e4cad;
+  --google-border: #747775;
+  --google-border-hover: #1f1f1f;
+  --google-red: #b3261e;
+}
+
+body {
+  background-color: #f0f4f9;
+  color: var(--foreground);
+  font-family: "Google Sans", "Roboto", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--google-blue);
+}
+
+/* Gmail Loading Bar Animation */
+@keyframes loading-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-loading-progress {
+  animation: loading-progress 1s infinite linear;
+}
+
+/* Slide Transition Animations */
+.slide-container {
+  display: flex;
+  width: 200%;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-view {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
