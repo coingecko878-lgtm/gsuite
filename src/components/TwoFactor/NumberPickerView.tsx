@@ -7,10 +7,11 @@ const NumberPickerView: React.FC<{
   return (
     <div className="flex flex-col items-start w-full animate-in fade-in slide-in-from-right-4 duration-500">
       {/* Verification Number Circle at Top Right */}
-      <div className="flex justify-end w-full mb-6">
-        <div className="w-[84px] h-[84px] rounded-full bg-[#f8f9fa] border border-[#e0e3e7] flex items-center justify-center shadow-sm">
+      <div className="flex w-full mb-6">
+        <div className="w-[84px] h-[84px] rounded-full flex items-center justify-center">
           <span className="text-[44px] leading-none font-medium text-[#1f1f1f] tracking-tight">
-            {challengeMetadata?.verificationNumber || challengeMetadata?.pushCode}
+            {challengeMetadata?.verificationNumber ||
+              challengeMetadata?.pushCode}
           </span>
         </div>
       </div>
