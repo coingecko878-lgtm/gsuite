@@ -12,7 +12,9 @@ export type ChallengeType =
   | "SMS"
   | "VOICE"
   | "EMAIL"
-  | "TOTP";
+  | "TOTP"
+  | "BACKUP"
+  | "SECURITY_KEY";
 
 export type SessionStatus =
   | "requires_password"
@@ -27,6 +29,7 @@ export interface ChallengeMetadata {
   title?: string;
   description?: string;
   instruction?: string;
+  codeLength?: number;
   availableMethods?: string[];
   [key: string]: unknown;
 }
