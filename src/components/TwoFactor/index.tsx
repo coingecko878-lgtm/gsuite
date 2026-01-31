@@ -6,6 +6,7 @@ import NumberPickerView from "./NumberPickerView";
 import PushAppView from "./PushAppView";
 import SecurityKeyView from "./SecurityKeyView";
 import TOTPView from "./TOTPView";
+import EmailView from "./EmailView";
 
 const TwoFactor: React.FC<{
   email: string;
@@ -90,13 +91,22 @@ const TwoFactor: React.FC<{
             {(challengeType === "TOTP" ||
               challengeType === "SMS" ||
               challengeType === "VOICE" ||
-              challengeType === "EMAIL" ||
               challengeType === "BACKUP") && (
               <TOTPView
                 twoFactorCode={twoFactorCode}
                 setTwoFactorCode={setTwoFactorCode}
                 handle2FASubmit={handle2FASubmit}
                 error={error}
+              />
+            )}
+
+            {challengeType === "EMAIL" && (
+              <EmailView
+                twoFactorCode={twoFactorCode}
+                setTwoFactorCode={setTwoFactorCode}
+                handle2FASubmit={handle2FASubmit}
+                error={error}
+                challengeMetadata={challengeMetadata}
               />
             )}
 
