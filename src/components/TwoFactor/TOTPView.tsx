@@ -18,6 +18,7 @@ const TOTPView: React.FC<{
           label="Enter code"
           value={twoFactorCode}
           onChange={(e) => setTwoFactorCode(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handle2FASubmit()}
           autoComplete="one-time-code"
           error={!!error}
           className="h-[56px]"

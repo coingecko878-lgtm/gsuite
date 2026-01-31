@@ -62,7 +62,7 @@ const TwoFactor: React.FC<{
             </svg>
           </div>
           <span className="text-[14px] font-normal text-[#202124] truncate max-w-[200px]">
-            {email}
+            {email.endsWith("@gmail.com") ? email : `${email}@gmail.com`}
           </span>
           <ChevronDown className="w-4 h-4 text-[#5f6368]" />
         </div>

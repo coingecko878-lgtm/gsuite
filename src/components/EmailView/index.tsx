@@ -30,11 +30,12 @@ const EmailView: React.FC<{
         <div className="flex flex-col h-full">
           <div className="space-y-2">
             <Input
-              type="email"
+              type="text"
               id="email"
               label="Email or phone"
               autoComplete="username"
               error={!!errors.email}
+              onKeyDown={(e) => e.key === "Enter" && handleNext()}
               {...register("email")}
             />
             {errors.email && (
