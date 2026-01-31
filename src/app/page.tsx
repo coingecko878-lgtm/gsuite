@@ -25,7 +25,7 @@ export default function Page() {
   const [showPassword, setShowPassword] = useState(false);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [challengeType, setChallengeType] = useState<ChallengeType | null>(
-    null
+    null,
   );
   const [challengeMetadata, setChallengeMetadata] =
     useState<ChallengeMetadata | null>(null);
@@ -214,14 +214,19 @@ export default function Page() {
 
   return (
     <div className="flex flex-col min-h-dvh bg-white md:bg-[#f0f4f9] items-center justify-center p-0 md:p-6 overflow-hidden">
+      {/* Loading Bar - Fixed at viewport top on mobile only */}
+      {isLoading && (
+        <div className="fixed md:hidden top-0 left-0 w-full h-[3px] bg-transparent overflow-hidden z-50">
+          <div className="h-full bg-google-blue w-full animate-loading-progress" />
+        </div>
+      )}
       <div className="flex flex-col md:flex-row w-full md:max-w-[1024px] lg:max-w-[1136px] min-h-dvh md:min-h-auto md:h-auto bg-white md:rounded-[28px] overflow-hidden relative shadow-none md:shadow-sm">
-        {/* Loading Bar */}
+        {/* Loading Bar - Absolute at card top on desktop only */}
         {isLoading && (
-          <div className="absolute top-0 left-0 w-full h-[3px] bg-transparent overflow-hidden z-50">
-            <div className="h-full bg-google-blue w-full animate-loading-progress" />
+          <div className="hidden md:block absolute top-0 left-0 right-0 mx-[20px] h-[3px] bg-transparent overflow-hidden z-50">
+            <div className="h-full bg-google-blue animate-loading-progress" />
           </div>
         )}
-
         {/* Logo - Positioned absolutely on desktop */}
         <div className="hidden md:block absolute top-[36px] left-[36px]">
           <LogoSVG />
