@@ -108,7 +108,7 @@ const TwoFactor: React.FC<{
       </div>
 
       {/* Bottom Actions - Full Width, Positioned at Card Bottom */}
-      <div className="absolute bottom-[48px] left-[48px] right-[48px] flex justify-between items-center">
+      <div className="mt-8 md:mt-0 md:absolute md:bottom-[48px] md:left-[48px] md:right-[48px] flex justify-end items-center">
         {/* Resend it - Left side */}
         <div className="flex items-center">
           {(challengeType === "PUSH" ||

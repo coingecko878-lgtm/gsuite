@@ -8,8 +8,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Google | Next.js App",
-  description: "A premium Next.js application with Tailwind CSS 4.",
+  title: "Sign in with your Google Account.",
+  description: "Sign in with your Google Account. This account will be available to other Google apps in the browser.",
 };
 
 import QueryProvider from "@/components/providers/query-provider";

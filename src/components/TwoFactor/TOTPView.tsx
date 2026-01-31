@@ -1,6 +1,4 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import React from "react";
 import Input from "../ui/input";
 
 const TOTPView: React.FC<{
@@ -11,25 +9,41 @@ const TOTPView: React.FC<{
 }> = ({ twoFactorCode, setTwoFactorCode, handle2FASubmit, error }) => {
   return (
     <div className="w-full animate-in fade-in slide-in-from-right-4 duration-500">
-      <div className="mb-6">
+      {/* Section Title */}
+      <h2 className="text-[16px] font-normal text-[#202124] mb-2">
+        2-Step Verification
+      </h2>
+
+      {/* Description with bold app name */}
+      <p className="text-[14px] text-[#5f6368] mb-6 leading-[20px]">
+        Get a verification code from the{" "}
+        <span className="font-semibold text-[#202124]">
+          Google Authenticator
+        </span>{" "}
+        app
+      </p>
+
+      {/* Code Input */}
+      <div className="mb-4">
         <Input
           type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
           id="2fa-code"
           label="Enter code"
+          autoComplete="one-time-code"
           value={twoFactorCode}
-          onChange={(e) => setTwoFactorCode(e.target.value)}
+          onChange={(e) => setTwoFactorCode(e.target.value.replace(/\D/g, ""))}
+          error={!!error}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               (e.target as HTMLInputElement).blur();
               handle2FASubmit();
             }
           }}
-          autoComplete="one-time-code"
-          error={!!error}
-          className="h-[56px]"
         />
         {error && (
-          <div className="text-google-red text-[12px] flex items-center gap-1.5 mt-2 ml-1">
+          <div className="text-google-red text-xs mt-2 ml-1 flex items-center gap-1">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
@@ -37,17 +51,18 @@ const TOTPView: React.FC<{
                 clipRule="evenodd"
               />
             </svg>
-            <span>{error}</span>
+            {error}
           </div>
         )}
       </div>
 
+      {/* Don't ask again checkbox */}
       <div className="flex items-center gap-3 group cursor-pointer">
         <div className="relative flex items-center">
           <input
             type="checkbox"
             id="totp-dont-ask-again"
-            className="peer appearance-none w-[18px] h-[18px] border-2 border-[#444746] rounded-[2px] cursor-pointer checked:bg-[#0b57d0] checked:border-[#0b57d0] transition-all duration-200"
+            className="peer appearance-none w-[18px] h-[18px] border-2 border-[#5f6368] rounded-[2px] cursor-pointer checked:bg-[#1a73e8] checked:border-[#1a73e8] transition-all duration-200"
             defaultChecked
           />
           <svg
@@ -66,7 +81,7 @@ const TOTPView: React.FC<{
         </div>
         <label
           htmlFor="totp-dont-ask-again"
-          className="text-[14px] text-[#1f1f1f] cursor-pointer select-none font-normal"
+          className="text-[14px] text-[#202124] cursor-pointer select-none font-normal"
         >
           Don&apos;t ask again on this device
         </label>
