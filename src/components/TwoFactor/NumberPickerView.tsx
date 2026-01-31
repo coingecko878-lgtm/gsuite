@@ -17,11 +17,11 @@ const NumberPickerView: React.FC<{
       </div>
 
       <h2 className="text-[22px] font-normal text-[#1f1f1f] mb-3 leading-[28px]">
-        Open the Gmail app on iPhone
+        Open the Gmail app on your phone
       </h2>
 
       <p className="text-[14px] text-[#444746] leading-[20px] font-normal mb-8">
-        Google sent a notification to your iPhone. Open the Gmail app, tap Yes on the prompt, then tap{" "}
+        Google sent a notification to your phone. Open the Gmail app, tap Yes on the prompt, then tap{" "}
         <span className="text-[14px] text-[#1f1f1f] leading-[20px] font-normal">
           {challengeMetadata?.verificationNumber}
         </span>{" "}

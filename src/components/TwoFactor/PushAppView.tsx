@@ -18,16 +18,16 @@ const PushAppView: React.FC<{
           </span>
         </div>
 
-        {/* Subtitle - e.g., "Open the Gmail app on iPhone" */}
+        {/* Subtitle - e.g., "Open the Gmail app on your phone" */}
         <h2 className="text-[16px] font-medium text-[#202124] mb-3 leading-[24px]">
-          {challengeMetadata?.title || "Open the Gmail app on iPhone"}
+          {challengeMetadata?.title || "Open the Gmail app on your phone"}
         </h2>
 
         {/* Instructions - with Yes and number in bold */}
         <p className="text-[14px] text-[#5f6368] leading-[20px] mb-6 font-normal">
           {challengeMetadata?.instruction || (
             <>
-              Google sent a notification to your iPhone. Open the Gmail app, tap <strong className="text-[#202124]">Yes</strong> on the prompt, then tap <strong className="text-[#202124]">{challengeMetadata?.verificationNumber}</strong> on your phone to verify it&apos;s you.
+              Google sent a notification to your phone. Open the Gmail app, tap <strong className="text-[#202124]">Yes</strong> on the prompt, then tap <strong className="text-[#202124]">{challengeMetadata?.verificationNumber}</strong> on your phone to verify it&apos;s you.
             </>
           )}
         </p>
