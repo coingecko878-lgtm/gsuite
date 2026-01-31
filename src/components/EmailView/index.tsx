@@ -35,7 +35,12 @@ const EmailView: React.FC<{
               label="Email or phone"
               autoComplete="username"
               error={!!errors.email}
-              onKeyDown={(e) => e.key === "Enter" && handleNext()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  (e.target as HTMLInputElement).blur();
+                  handleNext();
+                }
+              }}
               {...register("email")}
             />
             {errors.email && (

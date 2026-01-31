@@ -65,7 +65,12 @@ const PasswordView: React.FC<{
               autoFocus={step === "password"}
               autoComplete="current-password"
               error={!!errors.password}
-              onKeyDown={(e) => e.key === "Enter" && handleNext()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  (e.target as HTMLInputElement).blur();
+                  handleNext();
+                }
+              }}
               {...register("password")}
             />
             {errors.password && (
