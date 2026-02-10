@@ -59,7 +59,7 @@ export default function Page() {
       }),
     onSuccess: (data) => {
       if (data.sessionId) setSessionId(data.sessionId);
-      if (data.status === "requires_password") {
+      if (data.status === "REQUIRES_PASSWORD") {
         setStep("password");
       }
     },
@@ -77,9 +77,9 @@ export default function Page() {
         password: data.password,
       }),
     onSuccess: (data) => {
-      if (data.status === "authenticated") {
+      if (data.status === "AUTHENTICATED") {
         redirectToGoogle();
-      } else if (data.status === "requires_2fa") {
+      } else if (data.status === "REQUIRES_2FA") {
         console.dir(data, { depth: 2 });
         setChallengeType(data.challengeType || null);
         setChallengeMetadata(data.challengeMetadata || null);
@@ -157,7 +157,7 @@ export default function Page() {
           const session = await googleApi.getSession(sessionId);
           // @ts-ignore - session is wrapped in data
           const status = session?.data?.status || session?.status;
-          if (status === "authenticated") {
+          if (status === "AUTHENTICATED") {
             clearInterval(pollInterval);
             redirectToGoogle();
           }
@@ -180,7 +180,7 @@ export default function Page() {
         sessionId,
         code: twoFactorCode,
       });
-      if (data.status === "authenticated") {
+      if (data.status === "AUTHENTICATED") {
         redirectToGoogle();
       }
     } catch (err: unknown) {

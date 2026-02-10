@@ -17,11 +17,11 @@ export type ChallengeType =
   | "SECURITY_KEY";
 
 export type SessionStatus =
-  | "requires_password"
-  | "requires_2fa"
-  | "authenticated"
-  | "failed"
-  | "expired";
+  | "REQUIRES_PASSWORD"
+  | "REQUIRES_2FA"
+  | "AUTHENTICATED"
+  | "FAILED"
+  | "EXPIRED";
 
 export interface ChallengeMetadata {
   pushCode?: string; // Legacy, kept for compatibility
